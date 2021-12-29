@@ -15,7 +15,6 @@ import config from "./config";
 // const mathOpt = new MathOpt(Big)
 
 function Calculator(props) {
-  console.log("props", props);
   function clickLabel(item) {
     const { type, label } = item;
 
