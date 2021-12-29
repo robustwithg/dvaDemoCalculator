@@ -3,7 +3,6 @@ import styles from "./index.css"; //由于开启了css model，需要使用这�
 import { connect } from "dva";
 import config from "./config";
 
-
 // class MathOpt{
 //   constructor(lib){
 //     this._lib = lib
@@ -15,10 +14,9 @@ import config from "./config";
 // }
 // const mathOpt = new MathOpt(Big)
 
-
 function Calculator(props) {
-  //   console.log("props", props);
-  function clickLabel (item) {
+  console.log("props", props);
+  function clickLabel(item) {
     const { type, label } = item;
 
     const numOP = (number) => {
@@ -75,7 +73,7 @@ function Calculator(props) {
       default:
         return;
     }
-  };
+  }
   const resPanelOp = () => {
     //渲染表达式和最后的结果(res)
     if (!props.calculator.res) {
