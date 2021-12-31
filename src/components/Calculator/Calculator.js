@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import styles from "./index.css"; //由于开启了css model，需要使用这种方式来引入样式
 import { connect } from "dva";
 import config from "./config";
+// import Big from "big.js";
 
 // class MathOpt{
 //   constructor(lib){

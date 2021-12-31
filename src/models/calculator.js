@@ -1,3 +1,5 @@
+import Big from "big.js";
+
 export default {
   namespace: "calculator",
   state: {
@@ -38,8 +40,11 @@ export default {
         data.push(numberData);
       } else {
         if (data[data.length - 1] !== state.chart) {
-          //没有运算符的时候持续改变最后一个数的值
+          if(data[data.length-1].length < 9) {   //限制最大数字的位数
+            //没有运算符的时候持续改变最后一个数的值
           data[data.length - 1] += numberData;
+          }
+          
         } else {
           data.push(numberData);
         }
@@ -90,8 +95,8 @@ export default {
           }
         }
       });
-      res = num;
-      state.res = parseFloat(res)
+      res = new Big(num);
+      state.res = res.toFixed(9);
       return { ...state };
     },
 

@@ -11,9 +11,13 @@
     border: none;
     outline: none;
     font-size: 30px;
-    background-color: #e3e7e9;
+    background-color: #858694;
     text-align: right;
 }
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #ffffff;
+}
+
 .parents {
     display: flex;
     align-items: center;
@@ -34,7 +38,7 @@ button {
     font-size: 30px;
     line-height: 0px;
     text-align: center;
-    color: #979ca4;
+    /* color: #979ca4; */
 }
 button:active {
     transition: background-color .3s;
@@ -45,8 +49,18 @@ button:active {
     background-color: #3a8ed0;
 }
 .dot,.zero,.one,.two,.three,.four,.five,.six,.seven,.eight,.nine {
-    background-color: #fafafa;
+    background-color: #e0e0e0;
 }
 .clear,.back,.increment,.decrease,.multiplication,.division {
-    background-color: #d8d8d8;
+    background-color: #f5923e;
+}
+.dot {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 25%
+}
+.zero {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 50%
 }
