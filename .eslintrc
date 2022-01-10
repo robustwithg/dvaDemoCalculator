@@ -1,3 +1,8 @@
 {
-  "extends": "umi"
+  "extends": "umi",
+  "settings": {
+    "react": {
+      "version": "999.999.999"
+    }
+  }
 }
