@@ -16,6 +16,12 @@ import config from "./config";
 // const mathOpt = new MathOpt(Big)
 
 function Calculator(props) {
+
+  const Big = require('big.js')
+  const x = Big(0.1)
+  const y = x.plus(0.2)   // '0.3'
+  console.log('test',Big(0.7).plus(x).plus(y));   // '1.1'
+
   function clickLabel(item) {
     const { type, label } = item;
 

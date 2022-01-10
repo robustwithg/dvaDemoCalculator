@@ -57,7 +57,7 @@ button:active {
 .dot {
     flex-grow: 0;
     flex-shrink: 1;
-    flex-basis: 25%
+    flex-basis: 50%;
 }
 .zero {
     flex-grow: 0;

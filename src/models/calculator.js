@@ -21,39 +21,48 @@ export default {
   },
 
   reducers: {
-    
     //得到按钮运算符号结果
     chartOp(state, action) {
       //获取按钮的运算符的符号
       state.chart = action.payload.chart;
       state.data.push(state.chart);
-      return { ...state};
+      return { ...state };
     },
 
     //得到按钮数字结果
     numOp(state, action) {
-      //获取按钮的数字值
       const numberData = action.numData;
-      //改变数组的值
-      const data = state.data;
-      if (data.length === 0) {
-        data.push(numberData);
-      } else {
-        if (data[data.length - 1] !== state.chart) {
-          if(data[data.length-1].length < 9) {   //限制最大数字的位数
-            //没有运算符的时候持续改变最后一个数的值
-          data[data.length - 1] += numberData;
-          }
-          
-        } else {
+      if (!state.res) {
+        //获取按钮的数字值
+
+        //改变数组的值
+        const data = state.data;
+        if (data.length === 0) {
           data.push(numberData);
+        } else {
+          if (data[data.length - 1] !== state.chart) {
+            if (data[data.length - 1].length < 9) {
+              //限制最大数字的位数
+              //没有运算符的时候持续改变最后一个数的值
+              data[data.length - 1] += numberData;
+            }
+          } else {
+            data.push(numberData);
+          }
         }
+        return { ...state };
+      } else {
+        state = {
+          chart: "",
+          res: "",
+          data: [numberData],
+        };
+        return { ...state };
       }
-      return { ...state};
     },
 
     //得到按钮运算结果
-    equalOp(state) { 
+    equalOp(state) {
       let res = null;
       let num = null;
       let chart = null;
@@ -106,25 +115,31 @@ export default {
         chart: "",
         res: "",
         data: [],
-      }
-      return {...state}
+      };
+      return { ...state };
     },
 
     //得到按钮回退结果
     backOp(state) {
-      const dataBack = []
-      dataBack.push(state.data[state.data.length-1])
-      if (state.data[state.data.length-1] === state.chart) {
-        state.data.splice(-1,1)
-      }else if((state.data[state.data.length-1] !== state.chart) && (dataBack.join('').length === 1)) {
-        state.data.splice(-1,1)
-      }else if((state.data[state.data.length-1] !== state.chart) && (dataBack.join('').length > 1)) {
-        dataBack.join(',').slice(0,dataBack.join(',').length-1);
-        state.data[state.data.length-1] = dataBack.join(',').slice(0,dataBack.join(',').length-1)
+      const dataBack = [];
+      dataBack.push(state.data[state.data.length - 1]);
+      if (state.data[state.data.length - 1] === state.chart) {
+        state.data.splice(-1, 1);
+      } else if (
+        state.data[state.data.length - 1] !== state.chart &&
+        dataBack.join("").length === 1
+      ) {
+        state.data.splice(-1, 1);
+      } else if (
+        state.data[state.data.length - 1] !== state.chart &&
+        dataBack.join("").length > 1
+      ) {
+        dataBack.join(",").slice(0, dataBack.join(",").length - 1);
+        state.data[state.data.length - 1] = dataBack
+          .join(",")
+          .slice(0, dataBack.join(",").length - 1);
       }
-      return {...state}
+      return { ...state };
     },
   },
-
-
 };
